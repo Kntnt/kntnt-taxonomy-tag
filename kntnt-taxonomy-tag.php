@@ -6,7 +6,7 @@
  * Plugin Name:       Kntnt Taxonomy Tag
  * Plugin URI:        https://www.kntnt.com/
  * Description:       Modifies the `post_tag` taxonomy whose terms describe different categories of content.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Thomas Barregren
  * Author URI:        https://www.kntnt.com/
  * License:           GPL-3.0+
@@ -75,7 +75,7 @@ class Taxonomy {
 
 			// Whether to display a column for the taxonomy on its post
 			// type listing screens.
-			'show_admin_column' => true,
+			'show_admin_column' => false,
 
 			// Metabox to show on edit. If a callable, it is called to render
 			// the metabox. If `null` the default metabox is used. If `false`,
