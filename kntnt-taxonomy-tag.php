@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name:       Kntnt Taxonomy Tag
  * Plugin URI:        https://www.kntnt.com/
- * Description:       Modifies the `post_tag` taxonomy whose terms describe different categories of content.
+ * Description:       Modifies the `post_tag` taxonomy whose terms are used for cross-referencing of content sharing the corresponding subject or theme.
  * Version:           1.0.1
  * Author:            Thomas Barregren
  * Author URI:        https://www.kntnt.com/
