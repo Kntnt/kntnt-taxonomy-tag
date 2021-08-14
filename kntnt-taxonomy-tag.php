@@ -16,20 +16,19 @@
 
 namespace Kntnt\Tag;
 
-
-defined( 'ABSPATH' ) && new Taxonomy;
+defined( 'ABSPATH' ) && new Taxonomy();
 
 
 class Taxonomy {
 
 	public function __construct() {
-		add_action( 'init', [ $this, 'run' ] );
+		add_action( 'init', array( $this, 'run' ) );
 	}
 
 	public function run() {
 
 		$slug       = apply_filters( 'kntnt_taxonomy_tag_slug', 'post_tag' );
-		$post_types = apply_filters( 'kntnt_taxonomy_tag_objects', [ 'post' ] );
+		$post_types = apply_filters( 'kntnt_taxonomy_tag_objects', array( 'post' ) );
 
 		register_taxonomy( $slug, null, $this->taxonomy( $slug ) );
 
@@ -37,12 +36,12 @@ class Taxonomy {
 			register_taxonomy_for_object_type( $slug, $post_type );
 		}
 
-		add_filter( 'term_updated_messages', [ $this, 'term_updated_messages' ] );
+		add_filter( 'term_updated_messages', array( $this, 'term_updated_messages' ) );
 
 	}
 
 	private function taxonomy() {
-		return [
+		return array(
 
 			// A short descriptive summary of what the taxonomy is for.
 			'description'        => _x( 'Tags is a taxonomy used as post metadata. Its terms describe a subject or theme. Its terms describe topics or themes of content. They are used for cross-referencing of content sharing the corresponding subject or theme.', 'Description', 'kntnt-taxonomy-tag' ),
@@ -83,12 +82,12 @@ class Taxonomy {
 			'meta_box_cb'        => false,
 
 			// Array of capabilities for this taxonomy.
-			'capabilities'       => [
+			'capabilities'       => array(
 				'manage_terms' => 'edit_posts',
 				'edit_terms'   => 'edit_posts',
 				'delete_terms' => 'edit_posts',
 				'assign_terms' => 'edit_posts',
-			],
+			),
 
 			// Sets the query var key for this taxonomy. Default $taxonomy key.
 			// If false, a taxonomy cannot be loaded
@@ -98,7 +97,7 @@ class Taxonomy {
 
 			// Triggers the handling of rewrites for this taxonomy.
 			// Replace the array with false to prevent handling of rewrites.
-			'rewrite'            => [
+			'rewrite'            => array(
 
 				// Customize the permastruct slug.
 				'slug'         => 'tag',
@@ -115,13 +114,13 @@ class Taxonomy {
 				// permalink_epmask is not set, defaults to EP_PERMALINK.
 				'ep_mask'      => null,
 
-			],
+			),
 
 			// Default term to be used for the taxonomy.
 			'default_term'       => null,
 
 			// An array of labels for this taxonomy.
-			'labels'             => [
+			'labels'             => array(
 				'name'                       => _x( 'Tags', 'Plural name', 'kntnt-taxonomy-tag' ),
 				'singular_name'              => _x( 'Tag', 'Singular name', 'kntnt-taxonomy-tag' ),
 				'search_items'               => _x( 'Search tags', 'Search items', 'kntnt-taxonomy-tag' ),
@@ -143,13 +142,13 @@ class Taxonomy {
 				'items_list'                 => _x( 'Items list', 'Tags list', 'kntnt-taxonomy-tag' ),
 				'most_used'                  => _x( 'Most used', 'Most used', 'kntnt-taxonomy-tag' ),
 				'back_to_items'              => _x( 'Back to tags', 'Back to items', 'kntnt-taxonomy-tag' ),
-			],
+			),
 
-		];
+		);
 	}
 
 	public function term_updated_messages( $messages ) {
-		$messages['tag'] = [
+		$messages['tag'] = array(
 			0 => '', // Unused. Messages start at index 1.
 			1 => __( 'Tag added.', 'kntnt-taxonomy-tag' ),
 			2 => __( 'Tag deleted.', 'kntnt-taxonomy-tag' ),
@@ -157,7 +156,7 @@ class Taxonomy {
 			4 => __( 'Tag not added.', 'kntnt-taxonomy-tag' ),
 			5 => __( 'Tag not updated.', 'kntnt-taxonomy-tag' ),
 			6 => __( 'Tags deleted.', 'kntnt-taxonomy-tag' ),
-		];
+		);
 		return $messages;
 	}
 
